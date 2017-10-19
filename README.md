@@ -11,6 +11,20 @@ Example usage with optional arguments for different hyperparameters (e.g., Dense
 $ python train.py --layers 40 --growth 12 --no-bottleneck --reduce 1.0 --name DenseNet-40-12
 ```
 
+# Set up tensorboard
+
+In you want to watch the training progress, you can use the tensorboard. 
+
+First, you need to run the tensorboard in remote server
+```
+tensorboard --logdir [runs-name]
+```
+Second, you need to setup reverse proxy in your own computer
+```
+ssh -NL 6006:localhost:6006 [remote server confiugration]
+```
+Third, open your browser and visit localhost:6006 you will see the tensorboard pages.
+
 ## DenseNets
 [DenseNets [1]](https://arxiv.org/abs/1608.06993) were introduced in late 2016 after to the discoveries by [[2]](https://arxiv.org/abs/1603.09382) and [[3]](https://arxiv.org/abs/1605.06431) that [residual networks [4]](https://arxiv.org/abs/1512.03385) exhibit extreme parameter redundancy. DenseNets address this shortcoming by reducing the size of the modules and by introducing more connections between layers. In fact, the output of each layer flows directly as input to all subsequent layers of the same feature dimension as illustrated in their Figure 1 (below). This increases the dependency between the layers and thus reduces redundancy.
 
